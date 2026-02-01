@@ -29,12 +29,18 @@
         .title-font { font-family: 'Permanent Marker', cursive; }
         .belt-node { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         .option-btn {
-            background: rgba(30, 41, 59, 0.7);
-            border: 2px solid #334155;
+            background: rgba(30, 41, 59, 0.9);
+            border: 2px solid #475569;
+            color: #f8fafc;
             transition: all 0.2s;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            min-height: 60px;
         }
         .option-btn:hover:not(:disabled) {
-            background: rgba(51, 65, 85, 0.9);
+            background: rgba(51, 65, 85, 1);
             border-color: #fbbf24;
             transform: translateY(-2px);
         }
@@ -78,7 +84,7 @@
 <body class="min-h-screen flex items-center justify-center p-4">
     <div class="dojo-overlay"></div>
 
-    <!-- Sensei Message Box -->
+    <!-- Sensei Mesaj Kutusu -->
     <div id="message-box" class="fixed top-10 z-[60] w-full max-w-md bg-indigo-900 border-2 border-indigo-400 p-4 rounded-2xl shadow-2xl flex items-center gap-4">
         <div class="text-3xl">⛩️</div>
         <div>
@@ -88,38 +94,38 @@
         <button onclick="hideSenseiMessage()" class="ml-auto text-indigo-300 hover:text-white">✕</button>
     </div>
 
-    <!-- Intro Screen -->
-    <div id="intro-screen" class="max-w-3xl w-full bg-slate-900/80 backdrop-blur-xl border border-slate-700 rounded-3xl p-8 shadow-2xl flex flex-col gap-6 fade-in">
-        <div class="text-center">
-            <h1 class="title-font text-4xl text-amber-500 mb-2">AİKİDO'YA HOŞ GELDİNİZ</h1>
+    <!-- Giriş Ekranı -->
+    <div id="intro-screen" class="max-w-3xl w-full bg-slate-900/80 backdrop-blur-xl border border-slate-700 rounded-3xl p-8 shadow-2xl flex flex-col gap-6 fade-in text-center">
+        <div>
+            <h1 class="title-font text-4xl text-amber-500 mb-2 uppercase">Kim Siyah Kuşak Olmak İster?</h1>
             <p class="text-slate-400 tracking-widest font-bold uppercase">Zihin, Beden ve Ruh Uyumunun Yolu</p>
+            <p class="text-amber-600/80 text-xs mt-2 uppercase font-bold tracking-tighter">Kurucu: Morihei Ueshiba (O-Sensei)</p>
         </div>
 
-        <div class="bg-slate-800/60 p-6 rounded-2xl border border-amber-500/30">
-            <label class="block text-amber-400 text-xs font-bold uppercase mb-2">Dojo Kayıt Defteri</label>
-            <input type="text" id="user-name-input" placeholder="Lütfen adınızı giriniz..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition">
-            <!-- Kişiselleştirilmiş Mutlu Yıllar Mesajı -->
-            <p id="new-year-msg" class="hidden mt-4 p-3 bg-indigo-500/20 border border-indigo-500/30 rounded-lg text-sm text-indigo-300 italic text-center animate-pulse"></p>
+        <!-- Rastgele Felsefi Söz -->
+        <div class="p-6 bg-slate-800/60 rounded-2xl border border-amber-500/30 italic">
+            <p id="intro-quote" class="text-slate-200 text-lg leading-relaxed"></p>
+            <p id="intro-quote-author" class="text-amber-500 text-xs mt-3 font-bold uppercase tracking-widest"></p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm leading-relaxed">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm leading-relaxed text-left">
             <div class="bg-slate-800/40 p-4 rounded-xl border border-slate-700">
-                <h3 class="text-amber-400 font-bold mb-1">📜 Kurallar</h3>
-                <p class="text-xs text-slate-400">7 kuşak, her kuşakta 3 soru. Yanlış cevap yolu baştan yürütür. İpuçları (💡) yanınızda.</p>
+                <h3 class="text-amber-400 font-bold mb-1">📜 Genişletilmiş Sınav</h3>
+                <p class="text-xs text-slate-400">Her kuşak için rastgele seçilen 5 soru (toplam 35 soru) sizi bekliyor. Sıralama her seferinde değişir.</p>
             </div>
             <div class="bg-slate-800/40 p-4 rounded-xl border border-slate-700">
-                <h3 class="text-amber-400 font-bold mb-1">🥋 Hedef</h3>
-                <p class="text-xs text-slate-400">Tüm seviyeleri geçerek adınıza özel Siyah Kuşak diplomasını alın.</p>
+                <h3 class="text-amber-400 font-bold mb-1">🥋 Ustalık Yolu</h3>
+                <p class="text-xs text-slate-400">Beyazdan siyaha giden bu yolda sadece teknik değil, felsefe de önemlidir. Mutlu Yıllar ve başarılar dileriz!</p>
             </div>
         </div>
 
         <button onclick="game.start()" class="bg-amber-500 text-slate-900 font-black py-4 rounded-2xl hover:bg-amber-400 transition transform hover:scale-105 shadow-xl">YOLCULUĞA BAŞLA</button>
     </div>
 
-    <!-- Main Game -->
+    <!-- Ana Oyun Ekranı -->
     <div id="game-app" class="hidden max-w-4xl w-full bg-slate-900/40 backdrop-blur-xl border border-slate-700 rounded-3xl p-6 md:p-10 shadow-2xl relative">
         <header class="text-center mb-8">
-            <h1 class="title-font text-3xl md:text-5xl text-amber-500">KİM SİYAH KUŞAK OLMAK İSTER?</h1>
+            <h1 class="title-font text-3xl md:text-5xl text-amber-500">AİKİDO YOLCULUĞU</h1>
         </header>
 
         <div class="mb-10">
@@ -142,19 +148,24 @@
 
         <footer class="mt-10 flex flex-wrap justify-center gap-4 border-t border-slate-800 pt-8">
             <button id="joker-sensei" onclick="game.useSensei()" class="bg-indigo-600 px-6 py-3 rounded-xl text-sm font-bold shadow-lg">⛩️ Sensei'ye Sor</button>
-            <button id="joker-50" onclick="game.use5050()" class="joker-locked bg-purple-600 px-6 py-3 rounded-xl text-sm font-bold">☯️ 50:50</button>
-            <button id="joker-skip" onclick="game.useSkip()" class="bg-teal-600 px-6 py-3 rounded-xl text-sm font-bold">🌀 Pas Geç</button>
+            <button id="joker-50" onclick="game.use5050()" class="joker-locked bg-purple-600 px-6 py-3 rounded-xl text-sm font-bold transition flex flex-col items-center">
+                <span>☯️ 50:50</span>
+                <span id="joker-unlock-text" class="text-[10px] font-normal italic">3 seri gerekir</span>
+            </button>
+            <button id="joker-skip" onclick="game.useSkip()" class="bg-teal-600 px-6 py-3 rounded-xl text-sm font-bold shadow-lg">🌀 Pas Geç</button>
         </footer>
+
+        <div class="absolute top-4 right-6 text-slate-500 font-mono text-sm">Doğru Seri: <span id="streak-val" class="text-amber-500">0</span></div>
     </div>
 
-    <!-- Results -->
+    <!-- Sonuç Ekranı -->
     <div id="overlay" class="hidden fixed inset-0 bg-black/95 backdrop-blur-md z-50 flex items-center justify-center p-6 text-center">
         <div class="bg-slate-900 border-2 border-amber-500 p-10 rounded-3xl max-w-xl w-full flex flex-col items-center">
             <div id="modal-icon" class="text-7xl mb-6">🏆</div>
             <h2 id="modal-title" class="title-font text-3xl md:text-4xl text-amber-500 mb-4 uppercase"></h2>
             <div id="quote-box" class="mb-8 p-6 bg-slate-800/40 border-l-4 border-indigo-500 italic text-slate-300">
-                <p id="modal-quote"></p>
-                <p id="modal-quote-author" class="text-xs mt-2 text-indigo-400 font-bold"></p>
+                <p id="modal-quote-res"></p>
+                <p id="modal-quote-author-res" class="text-xs mt-2 text-indigo-400 font-bold"></p>
             </div>
             <p id="modal-desc" class="text-slate-400 mb-8"></p>
             <button onclick="game.resetToStart()" class="bg-amber-500 text-slate-900 font-black px-12 py-4 rounded-full hover:scale-105 transition">YOLU TEKRAR YÜRÜ</button>
@@ -165,171 +176,348 @@
         const AIKIDO_QUOTES = [
             { text: "Gerçek zafer, kendine karşı kazanılan zaferdir.", author: "Morihei Ueshiba" },
             { text: "Düşmek sorun değil, her seferinde daha güçlü ayağa kalkmak önemlidir.", author: "Aikido Yolu" },
-            { text: "Zihnini su gibi yap; formsuz ve her şeye uyumlu.", author: "Budo Felsefesi" }
+            { text: "Zihnini su gibi yap; formsuz ve her şeye uyumlu.", author: "Budo Felsefesi" },
+            { text: "Hatalar, mükemmelliğe giden yolun taşlarıdır.", author: "Dojo Bilgeliği" },
+            { text: "Yolun kendisi hedeftir. Her adım bir öğretidir.", author: "Zen Öğretisi" },
+            { text: "Başkalarını yenmek güçtür, kendini yenmek ise gerçek kudrettir.", author: "O-Sensei" },
+            { text: "Aikido, dünyayı bir aile yapmak ve barışı korumak için bir yoldur.", author: "Morihei Ueshiba" },
+            { text: "Aikido bir dövüş değil, evrensel sevgiyi yayma sanatıdır.", author: "O-Sensei" }
         ];
 
         const QUESTION_POOL = [
             { name: "Beyaz Kuşak", class: "belt-white", pool: [
                 { q: "Aikido'nun kurucusu Morihei Ueshiba'ya ne denir?", options: ["Soke", "O-Sensei", "Doshu", "Shihan"], correct: 1, hint: "Büyük Öğretmen anlamına gelir." },
                 { q: "Aikido'da 'Ki' neyi temsil eder?", options: ["Sevgi", "Yol", "Enerji / Ruh", "Uyum"], correct: 2, hint: "Yaşam enerjisidir." },
-                { q: "Antrenman başlarken söylenen rica sözü?", options: ["Arigato", "Onegai Shimasu", "Hajime", "Rei"], correct: 1, hint: "Lütfen çalışalım demektir." }
+                { q: "Antrenman başlarken söylenen rica sözü?", options: ["Arigato", "Onegai Shimasu", "Hajime", "Rei"], correct: 1, hint: "Lütfen çalışalım demektir." },
+                { q: "Aikido minderi ne ad verilir?", options: ["Tatami", "Dojo", "Zazen", "Futon"], correct: 0, hint: "Japon evlerinde kullanılan minder türüdür." },
+                { q: "Aikido kıyafetine ne ad verilir?", options: ["Kimono", "Keikogi", "Hakama", "Yukata"], correct: 1, hint: "Çalışma giysisi." },
+                { q: "Dojo'da selamlamaya ne denir?", options: ["Hajime", "Rei", "Yame", "Kiai"], correct: 1, hint: "Eğilerek yapılan selamlama." },
+                { q: "Aikido'nun temel felsefesini temsil eden sembollerden hangisi 'Uyum'dur?", options: ["Ai", "Ki", "Do", "Budo"], correct: 0, hint: "Kelimenin ilk harfidir." },
+                { q: "Dojo'da ön tarafa (kurucunun resminin olduğu yer) ne denir?", options: ["Kamiza", "Shimoza", "Joseki", "Shimoseki"], correct: 0, hint: "Üst taraf." },
+                { q: "Ayakta selam vermeye ne denir?", options: ["Zarei", "Ritsurei", "Mokuso", "Seiza"], correct: 1, hint: "Ayakta eğilmek." },
+                { q: "Antrenman bitişinde söylenen teşekkür sözü?", options: ["Sayonara", "Domo Arigato Gozaimashita", "Hajime", "Osu"], correct: 1, hint: "Çok teşekkür ederim demektir." }
             ]},
             { name: "Sarı Kuşak", class: "belt-yellow", pool: [
                 { q: "Ayaktaki temel duruşa ne denir?", options: ["Seiza", "Kamae", "Ukemi", "Tenkan"], correct: 1, hint: "Hazır duruştur." },
                 { q: "Öne doğru yuvarlanarak düşüş?", options: ["Mae Ukemi", "Ushiro Ukemi", "Yoko Ukemi", "Tobu Ukemi"], correct: 0, hint: "Mae ön demektir." },
-                { q: "Diz üstü yürüyüş tekniği?", options: ["Shikko", "Tenkan", "Irimi", "Tsugi-ashi"], correct: 0, hint: "Samuray yürüyüşüdür." }
+                { q: "Diz üstü yürüyüş tekniği?", options: ["Shikko", "Tenkan", "Irimi", "Tsugi-ashi"], correct: 0, hint: "Samuray yürüyüşüdür." },
+                { q: "Sağ ayak önde duruşa ne denir?", options: ["Migi Hanmi", "Hidari Hanmi", "Seiza", "Kamae"], correct: 0, hint: "Migi sağ demektir." },
+                { q: "Tekniği uygulayan kişi (savunmacı)?", options: ["Uke", "Nage", "Sensei", "Kohai"], correct: 1, hint: "Fırlatan." },
+                { q: "Geriye doğru yuvarlanarak düşüş?", options: ["Mae Ukemi", "Ushiro Ukemi", "Yoko Ukemi", "Tobu Ukemi"], correct: 1, hint: "Ushiro arka demektir." },
+                { q: "Aikido minderi üzerinde diz üstünde oturma?", options: ["Seiza", "Agura", "Kamae", "Zazen"], correct: 0, hint: "Geleneksel Japon oturuşu." },
+                { q: "Harekete başlama komutu?", options: ["Yame", "Hajime", "Rei", "Mokuso"], correct: 1, hint: "Başlayın." },
+                { q: "Merkezlenme noktasına ne denir?", options: ["Hara", "Seika Tanden", "Kokyu", "Kiai"], correct: 1, hint: "Karın altı bölge." },
+                { q: "Tekniği alan kişi (saldırgan)?", options: ["Nage", "Uke", "Sensei", "Shihan"], correct: 1, hint: "Düşüş yapan." }
             ]},
             { name: "Turuncu Kuşak", class: "belt-orange", pool: [
                 { q: "Saldırganın gücünü arkaya yönlendiren dairesel adım?", options: ["Irimi", "Tenkan", "Tsugi-ashi", "Ayumi-ashi"], correct: 1, hint: "Dönüş içerir." },
                 { q: "Birinci kontrol öğretisi?", options: ["Nikyo", "Sankyo", "Ikkyo", "Yonkyo"], correct: 2, hint: "Temel kol kilididir." },
-                { q: "128 cm uzunluğundaki ahşap sopa?", options: ["Bokken", "Tanto", "Jo", "Katana"], correct: 2, hint: "Asa formundadır." }
+                { q: "128 cm uzunluğundaki ahşap sopa?", options: ["Bokken", "Tanto", "Jo", "Katana"], correct: 2, hint: "Asa formundadır." },
+                { q: "İkinci kontrol öğretisi (bilek kilidi)?", options: ["Ikkyo", "Nikyo", "Sankyo", "Yonkyo"], correct: 1, hint: "Bileği içeri doğru büker." },
+                { q: "Doğrudan rakibin içine giriş adımı?", options: ["Irimi", "Tenkan", "Shikko", "Ura"], correct: 0, hint: "İçeri girmek." },
+                { q: "Aikido'da vuruş (şaşırtma) hamlesi?", options: ["Atemi", "Kiai", "Ukemi", "Suburi"], correct: 0, hint: "Bedene yapılan darbe." },
+                { q: "Kılıç formundaki ahşap silah?", options: ["Bokken", "Jo", "Tanto", "Shinai"], correct: 0, hint: "Kenjutsu için." },
+                { q: "Bileği spiral şekilde bükme (üçüncü öğreti)?", options: ["Ikkyo", "Nikyo", "Sankyo", "Yonkyo"], correct: 2, hint: "San 3 demektir." },
+                { q: "Karşılıklı aynı ayakların önde olduğu duruş?", options: ["Ai-hanmi", "Gyaku-hanmi", "Migi-hanmi", "Hidari-hanmi"], correct: 0, hint: "Uyumlu duruş." },
+                { q: "Teknik bitişinde rakibi yerde sabitleme?", options: ["Osae", "Nage", "Ukemi", "Rei"], correct: 0, hint: "Kilitleme." }
             ]},
             { name: "Yeşil Kuşak", class: "belt-green", pool: [
                 { q: "'Kotegaeshi' vücudun neresine uygulanır?", options: ["Omuz", "Bilek", "Dirsek", "Boyun"], correct: 1, hint: "Bilek bükülmesidir." },
                 { q: "Doğrudan içeri girerek fırlatma?", options: ["Iriminage", "Shihonage", "Tenchi-nage", "Koshinage"], correct: 0, hint: "Irimi içeri girmek demektir." },
-                { q: "Tekniği yapan kişiye ne denir?", options: ["Uke", "Nage (Tori)", "Sensei", "Kohai"], correct: 1, hint: "Fırlatan kişidir." }
+                { q: "Yerde kontrol tekniklerinin genel adı?", options: ["Katame-waza", "Nage-waza", "Atemi-waza", "Uke-waza"], correct: 0, hint: "Sabitleme teknikleri." },
+                { q: "Bıçak saldırılarına karşı çalışma?", options: ["Tanto-dori", "Jo-dori", "Bokken-dori", "Kumi-tachi"], correct: 0, hint: "Tanto bıçaktır." },
+                { q: "Dördüncü kontrol öğretisi (sinir noktasına baskı)?", options: ["Nikyo", "Yonkyo", "Sankyo", "Gokyo"], correct: 1, hint: "Yon 4 demektir." },
+                { q: "Nefes gücü fırlatışı?", options: ["Kokyunage", "Shihonage", "Tenchinage", "Koshinage"], correct: 0, hint: "Kokyu nefestir." },
+                { q: "Rakibin dengesini bozma durumuna ne denir?", options: ["Kuzushi", "Zanshin", "Kiai", "Ma-ai"], correct: 0, hint: "Denge kaybı." },
+                { q: "Sessiz meditasyon (Antrenman başı ve sonu)?", options: ["Mokuso", "Zanshin", "Misogi", "Hara"], correct: 0, hint: "Gözler kapalı düşünce." },
+                { q: "Dikey kesiş hareketi (Kılıç disiplininden)?", options: ["Shomenuchi", "Yokomenuchi", "Tsuki", "Atemi"], correct: 0, hint: "Alna vuruş." },
+                { q: "Yan taraftan kesiş hareketi?", options: ["Shomenuchi", "Yokomenuchi", "Tsuki", "Atemi"], correct: 1, hint: "Yoko yan demektir." }
             ]},
             { name: "Mavi Kuşak", class: "belt-blue", pool: [
                 { q: "Shihonage'deki 'Shiho' ne demektir?", options: ["Dört yön", "Büyük atış", "Kılıç", "Nefes"], correct: 0, hint: "Dört tarafı temsil eder." },
                 { q: "Diz üstünde yapılan tekniklere ne denir?", options: ["Tachi-waza", "Suwari-waza", "Hanmi-handachi", "Randori"], correct: 1, hint: "Oturarak çalışmadır." },
-                { q: "Ahşap kılıca ne denir?", options: ["Tanto", "Bokken", "Jo", "Shinai"], correct: 1, hint: "Tahta kılıçtır." }
+                { q: "Dönerek yapılan fırlatma (Dönel fırlatış)?", options: ["Kaitennage", "Iriminage", "Shihonage", "Tenchinage"], correct: 0, hint: "Kaiten dönmektir." },
+                { q: "Gök-Yer fırlatışı?", options: ["Tenchinage", "Kokyunage", "Koshinage", "Iriminage"], correct: 0, hint: "Ten gök, Chi yer." },
+                { q: "Bire karşı çoklu saldırgan çalışması?", options: ["Randori", "Kata", "Suburi", "Embu"], correct: 0, hint: "Serbest çalışma." },
+                { q: "Kılıç (Bokken) ile yapılan teknikler?", options: ["Ken-waza", "Jo-waza", "Tanto-waza", "Tai-jutsu"], correct: 0, hint: "Ken kılıç demektir." },
+                { q: "Beşinci kontrol öğretisi (Bıçak kontrolü)?", options: ["Ikkyo", "Nikyo", "Sankyo", "Gokyo"], correct: 3, hint: "Go 5 demektir." },
+                { q: "Kalçadan fırlatma tekniği?", options: ["Koshinage", "Iriminage", "Shihonage", "Tenchinage"], correct: 0, hint: "Koshi kalça." },
+                { q: "Saldırganın ayakta, savunmacının oturur olduğu teknikler?", options: ["Hanmi-handachi", "Suwari-waza", "Tachi-waza", "Randori"], correct: 0, hint: "Yarı oturur." },
+                { q: "Tekniğin arkadan (dönerek) uygulanma biçimi?", options: ["Omote", "Ura", "Irimi", "Tenkan"], correct: 1, hint: "Arka taraf." }
             ]},
             { name: "Kahverengi Kuşak", class: "belt-brown", pool: [
-                { q: "'Gokyo' neye karşı kullanılan beşinci öğretidir?", options: ["Tekme", "Boğaz", "Bıçak", "Yumruk"], correct: 2, hint: "Silahlı saldırıdır." },
-                { q: "Siyah kuşak pileli pantolonu?", options: ["Gi", "Keikogi", "Hakama", "Obi"], correct: 2, hint: "7 pileli kıyafettir." },
-                { q: "Birden fazla saldırgana karşı serbest çalışma?", options: ["Randori", "Kata", "Suburi", "Embu"], correct: 0, hint: "Kaotik savunmadır." }
+                { q: "Siyah kuşakların giydiği pileli pantolon?", options: ["Gi", "Keikogi", "Hakama", "Obi"], correct: 2, hint: "7 pileli kıyafettir." },
+                { q: "Aikido çalışırken giyilen üst ve alt takımın adı?", options: ["Keikogi", "Hakama", "Yukata", "Kimono"], correct: 0, hint: "Gi olarak da bilinir." },
+                { q: "Manevi ve bedensel arınma ritüeli?", options: ["Misogi", "Mokuso", "Zanshin", "Satori"], correct: 0, hint: "Su ile temizlenme/arınma." },
+                { q: "Tekniğin önden (doğrudan) uygulanma biçimi?", options: ["Omote", "Ura", "Irimi", "Tenkan"], correct: 0, hint: "Ön taraf." },
+                { q: "Mesafe kavramına ne denir?", options: ["Ma-ai", "Ma", "Ai", "Do"], correct: 0, hint: "Saldırganla aradaki boşluk." },
+                { q: "Jo (asa) ile yapılan solo hareketler dizisi?", options: ["Kata", "Suburi", "Randori", "Waza"], correct: 0, hint: "Sıralı form." },
+                { q: "Daha kıdemli öğrenciye ne denir?", options: ["Sempai", "Kohai", "Sensei", "Shihan"], correct: 0, hint: "Üst seviye." },
+                { q: "Daha yeni öğrenciye ne denir?", options: ["Kohai", "Sempai", "Doshu", "Soke"], correct: 0, hint: "Alt seviye." },
+                { q: "Aikido diplomasına ve seviyesine ne denir?", options: ["Dan/Kyu", "Belt", "Point", "Grade"], correct: 0, hint: "Derecelendirme." },
+                { q: "Siyah kuşak öncesi son renkli kuşak seviyesi?", options: ["1. Kyu", "1. Dan", "6. Kyu", "Siyah"], correct: 0, hint: "En kıdemli kyu." }
             ]},
             { name: "Siyah Kuşak", class: "belt-black", pool: [
                 { q: "Aikido'nun manevi merkezi neresidir?", options: ["Tokyo", "Kyoto", "Iwama", "Osaka"], correct: 2, hint: "Dojo burada kurulmuştur." },
                 { q: "Teknik sonrası tetikte kalma hali?", options: ["Mokuso", "Zanshin", "Satori", "Kamae"], correct: 1, hint: "Farkındalık halidir." },
-                { q: "Uyum ve bağlanma anlamına gelen terim?", options: ["Musubi", "Zanshin", "Kiai", "Atemi"], correct: 0, hint: "Düğümlemek demektir." }
+                { q: "O-Sensei'nin 'Gerçek zafer kendine olan zaferdir' sözü hangisidir?", options: ["Masakatsu Agatsu", "Katsuhayabi", "Takemusu Aiki", "Aiki Jinja"], correct: 0, hint: "Masa-katsu..." },
+                { q: "Siyah kuşak sahiplerine verilen genel ad?", options: ["Yudansha", "Mudansha", "Kohai", "Shihan"], correct: 0, hint: "Dan sahibi." },
+                { q: "Henüz siyah kuşağı olmayanlara ne denir?", options: ["Mudansha", "Yudansha", "Sensei", "Sempai"], correct: 0, hint: "Dansız." },
+                { q: "Kurucunun resminin arkasındaki kutsal yer?", options: ["Kamiza", "Tokonoma", "Butsudan", "Dojo"], correct: 0, hint: "Kutsal köşe." },
+                { q: "Enerjiyi serbest bırakma ve bağırma?", options: ["Kiai", "Atemi", "Kokyu", "Kuzushi"], correct: 0, hint: "Ruhun çığlığı." },
+                { q: "Aikido'nun 'Yaratıcı Savaş Sanatı' kavramı?", options: ["Takemusu Aiki", "Misogi", "Satori", "Hajime"], correct: 0, hint: "Take-musu." },
+                { q: "Uyum ve bağlanma anlamına gelen terim?", options: ["Musubi", "Zanshin", "Kiai", "Atemi"], correct: 0, hint: "Düğümlemek demektir." },
+                { q: "1. Dan seviyesine ne ad verilir?", options: ["Shodan", "Nidan", "Sandan", "Yondan"], correct: 0, hint: "Başlangıç derecesi." }
             ]}
         ];
-
-        // Personalization for name input
-        document.getElementById('user-name-input').addEventListener('input', (e) => {
-            const name = e.target.value.trim();
-            const nyMsg = document.getElementById('new-year-msg');
-            if (name) {
-                nyMsg.innerText = `Mutlu Yıllar ${name}! 🎉 Dojo kapıları senin için açılıyor.`;
-                nyMsg.classList.remove('hidden');
-            } else {
-                nyMsg.classList.add('hidden');
-            }
-        });
 
         function shuffle(arr) { return arr.sort(() => Math.random() - 0.5); }
 
         function hideSenseiMessage() {
-            document.getElementById('message-box').classList.remove('active');
+            const box = document.getElementById('message-box');
+            if(box) box.classList.remove('active');
         }
 
         function showSenseiMessage(text, isHint = false) {
             const box = document.getElementById('message-box');
-            document.getElementById('message-label').innerText = isHint ? "⛩️ Sensei'nin İpucu" : "⛩️ Sensei Fısıldıyor";
-            document.getElementById('message-text').innerText = text;
+            if(!box) return;
+            const label = document.getElementById('message-label');
+            const txt = document.getElementById('message-text');
+            if(label) label.innerText = isHint ? "⛩️ Sensei'nin İpucu" : "⛩️ Sensei Fısıldıyor";
+            if(txt) txt.innerText = text;
             box.classList.add('active');
             setTimeout(() => box.classList.remove('active'), 6000);
         }
 
         class AikidoGame {
-            constructor() { this.userName = ""; }
-            start() {
-                this.userName = document.getElementById('user-name-input').value.trim() || "Genç Savaşçı";
-                document.getElementById('intro-screen').classList.add('hidden');
-                document.getElementById('game-app').classList.remove('hidden');
-                this.init();
+            constructor() { 
+                this.initApp();
             }
-            init() {
-                this.gameData = QUESTION_POOL.map(belt => ({ ...belt, questions: shuffle([...belt.pool]).slice(0, 3) }));
-                this.beltIdx = 0; this.qIdx = 0; this.streak = 0;
+
+            initApp() {
+                this.setRandomIntroQuote();
+            }
+
+            setRandomIntroQuote() {
+                const quoteEl = document.getElementById('intro-quote');
+                const authorEl = document.getElementById('intro-quote-author');
+                if(!quoteEl || !authorEl) return;
+                const q = AIKIDO_QUOTES[Math.floor(Math.random() * AIKIDO_QUOTES.length)];
+                quoteEl.innerText = `"${q.text}"`;
+                authorEl.innerText = q.author;
+            }
+
+            start() {
+                const intro = document.getElementById('intro-screen');
+                const app = document.getElementById('game-app');
+                if(intro) intro.classList.add('hidden');
+                if(app) app.classList.remove('hidden');
+                this.initGame();
+            }
+
+            initGame() {
+                // Her kuşaktan havuzdan rastgele 5 soru seç
+                this.gameData = QUESTION_POOL.map(belt => {
+                    const poolCopy = [...belt.pool];
+                    const selected = shuffle(poolCopy).slice(0, 5); // 5 soru seç
+                    return { ...belt, questions: selected };
+                });
+                
+                this.beltIdx = 0; 
+                this.qIdx = 0; 
+                this.streak = 0;
                 this.jokers = { sensei: true, f50: true, skip: true };
                 this.totalQ = this.gameData.reduce((acc, belt) => acc + belt.questions.length, 0);
                 this.currentGlobal = 0;
-                this.renderTracker(); this.updateUI();
+                this.renderTracker(); 
+                this.updateUI();
             }
+
             renderTracker() {
-                const tr = document.getElementById('belt-tracker'); tr.innerHTML = '';
+                const tr = document.getElementById('belt-tracker'); 
+                if(!tr) return;
+                tr.innerHTML = '';
                 this.gameData.forEach((b, i) => {
                     const d = document.createElement('div');
                     d.className = `belt-node h-8 px-4 rounded-full flex items-center justify-center text-[10px] font-bold shadow-sm ${b.class} ${i > this.beltIdx ? 'opacity-20 scale-90' : 'opacity-100 scale-100'}`;
-                    d.innerText = b.name; tr.appendChild(d);
+                    d.innerText = b.name; 
+                    tr.appendChild(d);
                 });
             }
+
             updateUI() {
-                const b = this.gameData[this.beltIdx]; const q = b.questions[this.qIdx];
-                document.getElementById('question-text').innerText = q.q;
-                const tag = document.getElementById('belt-tag'); tag.innerText = `${b.name} - Soru ${this.qIdx + 1}/3`;
-                tag.className = `inline-block px-3 py-1 rounded text-xs font-black uppercase mb-3 ${b.class}`;
-                document.getElementById('streak-val').innerText = this.streak;
-                const grid = document.getElementById('options-grid'); grid.innerHTML = '';
-                q.options.forEach((o, i) => {
-                    const btn = document.createElement('button');
-                    btn.className = 'option-btn p-5 rounded-2xl text-left flex items-start gap-4';
-                    btn.innerHTML = `<span class="text-amber-500 font-bold">${String.fromCharCode(65 + i)}:</span> <span>${o}</span>`;
-                    btn.onclick = () => this.handleAnswer(i, btn);
-                    grid.appendChild(btn);
-                });
-                document.getElementById('progress-bar').style.width = `${(this.currentGlobal / this.totalQ) * 100}%`;
-                const f = document.getElementById('joker-50');
-                if (this.streak >= 3 && this.jokers.f50) f.className = 'bg-purple-600 px-6 py-3 rounded-xl text-sm font-bold shadow-lg joker-active';
-                else f.className = 'joker-locked bg-purple-600 px-6 py-3 rounded-xl text-sm font-bold opacity-30';
+                const b = this.gameData[this.beltIdx]; 
+                const q = b.questions[this.qIdx];
+                
+                const qText = document.getElementById('question-text');
+                const tag = document.getElementById('belt-tag');
+                const streakVal = document.getElementById('streak-val');
+                const progBar = document.getElementById('progress-bar');
+                const grid = document.getElementById('options-grid');
+                const f50Btn = document.getElementById('joker-50');
+                const f50Text = document.getElementById('joker-unlock-text');
+
+                if(qText) qText.innerText = q.q;
+                if(tag) {
+                    tag.innerText = `${b.name} - Soru ${this.qIdx + 1}/5`;
+                    tag.className = `inline-block px-3 py-1 rounded text-xs font-black uppercase mb-3 ${b.class}`;
+                }
+                if(streakVal) streakVal.innerText = this.streak;
+                
+                if(grid) {
+                    grid.innerHTML = '';
+                    // Şıkları da karıştırarak sunuyoruz
+                    const opts = q.options.map((o, i) => ({ text: o, id: i }));
+                    const shuffledOpts = shuffle([...opts]);
+                    
+                    shuffledOpts.forEach((o) => {
+                        const btn = document.createElement('button');
+                        btn.className = 'option-btn p-5 rounded-2xl text-left flex items-start gap-4';
+                        btn.innerHTML = `<span class="text-amber-500 font-bold">•</span> <span>${o.text}</span>`;
+                        btn.onclick = () => this.handleAnswer(o.id, btn);
+                        grid.appendChild(btn);
+                    });
+                }
+                
+                if(progBar) progBar.style.width = `${(this.currentGlobal / this.totalQ) * 100}%`;
+                
+                if(f50Btn) {
+                    if (this.streak >= 3 && this.jokers.f50) {
+                        f50Btn.className = 'bg-purple-600 px-6 py-3 rounded-xl text-sm font-bold shadow-lg joker-active';
+                        if(f50Text) f50Text.innerText = "Kullanıma Hazır!";
+                    } else {
+                        f50Btn.className = 'joker-locked bg-purple-600 px-6 py-3 rounded-xl text-sm font-bold opacity-30 cursor-not-allowed';
+                        if(f50Text) f50Text.innerText = this.jokers.f50 ? "3 seri gerekir" : "Kullanıldı";
+                    }
+                }
+                
                 this.setJokerStyle('joker-sensei', this.jokers.sensei);
                 this.setJokerStyle('joker-skip', this.jokers.skip);
             }
+
             setJokerStyle(id, active) {
                 const el = document.getElementById(id);
-                if (active) el.classList.remove('opacity-30', 'cursor-not-allowed');
-                else el.classList.add('opacity-30', 'cursor-not-allowed');
+                if (!el) return;
+                if (active) {
+                    el.classList.remove('opacity-30', 'cursor-not-allowed');
+                } else {
+                    el.classList.add('opacity-30', 'cursor-not-allowed');
+                }
             }
-            showCurrentHint() { showSenseiMessage(this.gameData[this.beltIdx].questions[this.qIdx].hint, true); }
-            handleAnswer(idx, btn) {
-                const corr = this.gameData[this.beltIdx].questions[this.qIdx].correct;
-                if (idx === corr) {
-                    btn.classList.add('correct'); this.streak++; this.currentGlobal++;
+
+            showCurrentHint() { 
+                const b = this.gameData[this.beltIdx];
+                const q = b.questions[this.qIdx];
+                showSenseiMessage(q.hint, true); 
+            }
+
+            handleAnswer(selectedId, btn) {
+                const b = this.gameData[this.beltIdx];
+                const q = b.questions[this.qIdx];
+                const corr = q.correct;
+                
+                if (selectedId === corr) {
+                    btn.classList.add('correct'); 
+                    this.streak++; 
+                    this.currentGlobal++;
                     setTimeout(() => this.next(), 800);
                 } else {
                     btn.classList.add('wrong');
-                    document.querySelectorAll('.option-btn').forEach((b, i) => { if(i === corr) b.classList.add('correct'); });
+                    // Yanlış cevapta doğru olanı bul ve göster (Burada id'ye göre butonları bulmak gerekir)
+                    // Basitlik için tüm butonlarda doğru metni arıyoruz
+                    document.querySelectorAll('.option-btn').forEach((b_el) => { 
+                        if(b_el.querySelector('span:last-child').innerText === q.options[corr]) {
+                            b_el.classList.add('correct');
+                        }
+                    });
                     setTimeout(() => this.end(false), 1200);
                 }
             }
+
             next() {
-                this.qIdx++; if (this.qIdx >= 3) { this.qIdx = 0; this.beltIdx++; this.renderTracker(); }
-                if (this.beltIdx >= this.gameData.length) this.end(true); else this.updateUI();
+                this.qIdx++; 
+                if (this.qIdx >= 5) { // Kuşak bitti
+                    this.qIdx = 0; 
+                    this.beltIdx++; 
+                    this.renderTracker(); 
+                }
+                if (this.beltIdx >= this.gameData.length) {
+                    this.end(true); 
+                } else {
+                    this.updateUI();
+                }
             }
-            useSensei() { if (!this.jokers.sensei) return; showSenseiMessage("Zihnini sakinleştir... Cevap Dojo'daki ilk dersinde gizli."); this.jokers.sensei = false; this.updateUI(); }
+
+            useSensei() { 
+                if (!this.jokers.sensei) return; 
+                showSenseiMessage("Zihnini sakinleştir... Aikido bir dövüş değil, uyumdur. Doğru seçenek zihninde beliriyor."); 
+                this.jokers.sensei = false; 
+                this.updateUI(); 
+            }
+
             use5050() {
                 if (this.streak < 3 || !this.jokers.f50) return;
-                const corr = this.gameData[this.beltIdx].questions[this.qIdx].correct;
+                const b = this.gameData[this.beltIdx];
+                const q = b.questions[this.qIdx];
+                const corrText = q.options[q.correct];
                 let rem = 0;
-                shuffle(Array.from(document.querySelectorAll('.option-btn'))).forEach(b => {
-                    if (b.querySelector('span:last-child').innerText !== this.gameData[this.beltIdx].questions[this.qIdx].options[corr] && rem < 2) {
-                        b.style.visibility = 'hidden'; rem++;
+                const btns = Array.from(document.querySelectorAll('.option-btn'));
+                shuffle(btns).forEach(b_el => {
+                    const optionText = b_el.querySelector('span:last-child').innerText;
+                    if (optionText !== corrText && rem < 2) {
+                        b_el.style.visibility = 'hidden'; rem++;
                     }
                 });
-                this.jokers.f50 = false; this.updateUI();
+                this.jokers.f50 = false; 
+                this.updateUI();
             }
-            useSkip() { if (!this.jokers.skip) return; this.jokers.skip = false; this.currentGlobal++; this.next(); }
+
+            useSkip() { 
+                if (!this.jokers.skip) return; 
+                this.jokers.skip = false; 
+                this.currentGlobal++; 
+                this.next(); 
+            }
+
             end(win) {
                 const ov = document.getElementById('overlay');
                 const q = AIKIDO_QUOTES[Math.floor(Math.random() * AIKIDO_QUOTES.length)];
-                document.getElementById('modal-quote').innerText = `"${q.text}"`;
-                document.getElementById('modal-quote-author').innerText = q.author;
-                ov.classList.remove('hidden');
+                
+                const titleEl = document.getElementById('modal-title');
+                const iconEl = document.getElementById('modal-icon');
+                const quoteEl = document.getElementById('modal-quote-res');
+                const authorEl = document.getElementById('modal-quote-author-res');
+                const descEl = document.getElementById('modal-desc');
+
+                if(quoteEl) quoteEl.innerText = `"${q.text}"`;
+                if(authorEl) authorEl.innerText = q.author;
+                
+                if(ov) ov.classList.remove('hidden');
+                
                 if (win) {
-                    document.getElementById('modal-icon').innerText = "🥋";
-                    document.getElementById('modal-title').innerText = `${this.userName.toUpperCase()}, SHODAN OLDUN!`;
-                    document.getElementById('modal-desc').innerText = "Tebrikler! Aikido yolunda siyah kuşağa ulaştın.";
+                    if(iconEl) iconEl.innerText = "🥋";
+                    if(titleEl) titleEl.innerText = "Siyah Kuşak Kazandınız!";
+                    if(descEl) descEl.innerText = "Tebrikler! 35 soruluk maratonu başarıyla tamamladınız. Aikido yolunda bir ustasınız.";
                 } else {
-                    document.getElementById('modal-icon').innerText = "🎋";
-                    document.getElementById('modal-title').innerText = "YOL DEVAM EDİYOR...";
-                    document.getElementById('modal-desc').innerText = `Üzülme ${this.userName}, başarı sabırda gizlidir.`;
+                    if(iconEl) iconEl.innerText = "🎋";
+                    if(titleEl) titleEl.innerText = "Yolculuk Kesintiye Uğradı";
+                    if(descEl) descEl.innerText = "Hatalar yolun parçasıdır. Dojo'ya geri dön ve zihnini tazele.";
                 }
             }
-            resetToStart() { document.getElementById('overlay').classList.add('hidden'); document.getElementById('game-app').classList.add('hidden'); document.getElementById('intro-screen').classList.remove('hidden'); }
+
+            resetToStart() { 
+                this.setRandomIntroQuote();
+                const ov = document.getElementById('overlay');
+                const app = document.getElementById('game-app');
+                const intro = document.getElementById('intro-screen');
+                if(ov) ov.classList.add('hidden'); 
+                if(app) app.classList.add('hidden'); 
+                if(intro) intro.classList.remove('hidden'); 
+            }
         }
+
         const game = new AikidoGame();
+        window.onload = () => game.setRandomIntroQuote();
     </script>
 </body>
 </html>
