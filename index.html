@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Kim Siyah Kuşak Olmak İster? Aikido felsefesi üzerine kurulu derinlemesine bilgi yarışması.">
+    <meta name="description" content="Kim Siyah Kuşak Olmak İster? Aikido felsefesi üzerine kurulu interaktif bilgi yarışması.">
     <title>Kim Siyah Kuşak Olmak İster: AİKİDO</title>
     
+    <!-- Tailwind CSS ve Google Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Permanent+Marker&display=swap" rel="stylesheet">
     
@@ -27,6 +28,7 @@
         }
         .title-font { font-family: 'Permanent Marker', cursive; }
         .belt-node { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        
         .option-btn {
             background: rgba(30, 41, 59, 0.9);
             border: 2px solid #475569;
@@ -37,12 +39,21 @@
             align-items: center;
             cursor: pointer;
             min-height: 55px;
+            outline: none !important;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
         }
         .option-btn:hover:not(:disabled) {
             background: rgba(51, 65, 85, 1);
             border-color: #fbbf24;
             transform: translateY(-2px);
         }
+        /* Şıklar seçilmeden önce işaret belirlemesini engelleyen kural */
+        .option-btn:focus, .option-btn:active {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
         .correct { background-color: #059669 !important; border-color: #10b981 !important; }
         .wrong { background-color: #dc2626 !important; border-color: #ef4444 !important; }
         
@@ -55,9 +66,6 @@
             transform: translate(-50%, 0);
         }
 
-        .custom-scrollbar::-webkit-scrollbar { width: 5px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #475569; border-radius: 5px; }
-
         .joker-locked { opacity: 0.3; cursor: not-allowed; }
         .joker-active { animation: glow 2s infinite; }
         @keyframes glow {
@@ -69,12 +77,12 @@
 <body class="min-h-screen flex items-center justify-center p-4">
     <div class="dojo-overlay"></div>
 
-    <!-- Mesaj Paneli (Felsefi Öğütler İçin) -->
+    <!-- Mesaj Paneli -->
     <div id="message-box" class="fixed top-10 z-[60] w-full max-w-md bg-indigo-900 border-2 border-indigo-400 p-4 rounded-2xl shadow-2xl flex items-center gap-4">
         <div class="text-3xl">⛩️</div>
         <div class="flex-1">
             <p id="message-label" class="text-xs font-bold text-indigo-300 uppercase tracking-tighter">Sensei Öğüdü</p>
-            <p id="message-text" class="text-sm font-medium italic"></p>
+            <p id="message-text" class="text-sm font-medium italic text-slate-200"></p>
         </div>
         <button onclick="hideSenseiMessage()" class="text-indigo-300 hover:text-white text-xl font-bold">✕</button>
     </div>
@@ -82,8 +90,8 @@
     <!-- Giriş Ekranı -->
     <div id="intro-screen" class="max-w-3xl w-full bg-slate-900/90 backdrop-blur-xl border border-slate-700 rounded-3xl p-8 shadow-2xl flex flex-col gap-6 text-center animate-fadeIn">
         <div>
-            <h1 class="title-font text-4xl text-amber-500 mb-2 uppercase tracking-tighter">KİM SİYAH KUŞAK OLMAK İSTER?</h1>
-            <p class="text-slate-400 tracking-widest font-bold uppercase text-xs">AİKİDO USTALIK YOLU</p>
+            <h1 class="title-font text-4xl text-amber-500 mb-2 uppercase tracking-tighter">Kim Siyah Kuşak Olmak İster?</h1>
+            <p class="text-slate-400 tracking-widest font-bold uppercase text-xs">Aikido Ustalık Yolu</p>
             <p class="text-amber-600/80 text-[10px] mt-2 uppercase font-bold tracking-widest">Kurucu: Morihei Ueshiba (O-Sensei)</p>
         </div>
 
@@ -93,17 +101,17 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-left">
-            <div class="bg-slate-800/40 p-3 rounded-xl border border-slate-700">
-                <h3 class="text-amber-400 font-bold text-xs mb-1 uppercase tracking-wider">📜 10 Soru Kuralı</h3>
-                <p class="text-[11px] text-slate-400">Her kuşak geçişi için 10 soruluk bir sınavı hatasız tamamlamanız gerekir.</p>
+            <div class="bg-slate-800/40 p-4 rounded-xl border border-slate-700">
+                <h3 class="text-amber-400 font-bold text-xs mb-1 uppercase tracking-wider">📜 Sınav Kuralları</h3>
+                <p class="text-[11px] text-slate-400 leading-relaxed">Her kuşak için 10 soruluk bir sınavı hatasız tamamlamanız gerekir. Sensei her soruda yanınızdadır.</p>
             </div>
-            <div class="bg-slate-800/40 p-3 rounded-xl border border-slate-700">
-                <h3 class="text-amber-400 font-bold text-xs mb-1 uppercase tracking-wider">🥋 Bilgi ve Uyum</h3>
-                <p class="text-[11px] text-slate-400">Yanlış cevap verdiğinizde, doğru yolu tekrar yürümek için en başa dönersiniz.</p>
+            <div class="bg-slate-800/40 p-4 rounded-xl border border-slate-700">
+                <h3 class="text-amber-400 font-bold text-xs mb-1 uppercase tracking-wider">🥋 Bilgi Yolu</h3>
+                <p class="text-[11px] text-slate-400 leading-relaxed">Yanlış cevap yolu keser. Doğru tekniği bulana kadar en başa dönerek zihninizi tazelemeniz istenir.</p>
             </div>
         </div>
 
-        <button onclick="game.start()" class="bg-amber-500 text-slate-900 font-black py-4 rounded-2xl hover:bg-amber-400 transition transform hover:scale-105 shadow-xl uppercase tracking-widest">YOLCULUĞA BAŞLA</button>
+        <button onclick="game.start()" class="bg-amber-500 text-slate-900 font-black py-4 rounded-2xl hover:bg-amber-400 transition transform hover:scale-105 shadow-xl uppercase tracking-widest">Yolculuğa Başla</button>
     </div>
 
     <!-- Oyun Ekranı -->
@@ -131,8 +139,8 @@
         </main>
 
         <footer class="mt-8 flex flex-wrap justify-center gap-4 border-t border-slate-800 pt-6">
-            <button id="joker-sensei" onclick="game.useSensei()" class="bg-indigo-700 hover:bg-indigo-600 px-8 py-3 rounded-xl text-xs font-bold shadow-lg transition-all">⛩️ Sensei Tavsiyesi</button>
-            <button id="joker-50" onclick="game.use5050()" class="bg-purple-700 px-8 py-3 rounded-xl text-xs font-bold transition flex flex-col items-center shadow-lg">
+            <button id="joker-sensei" onclick="game.useSensei()" class="bg-indigo-700 hover:bg-indigo-600 px-8 py-3 rounded-xl text-xs font-bold shadow-lg transition-all focus:outline-none">⛩️ Sensei Tavsiyesi</button>
+            <button id="joker-50" onclick="game.use5050()" class="bg-purple-700 px-8 py-3 rounded-xl text-xs font-bold transition flex flex-col items-center shadow-lg focus:outline-none">
                 <span>☯️ 50:50</span>
                 <span id="joker-unlock-text" class="text-[8px] font-normal italic">Kilitli</span>
             </button>
@@ -298,18 +306,13 @@
                 { q: "Siyah kuşak derecelerine genel olarak ne denir?", options: ["Kyu", "Dan", "Belt", "Level"], correct: 1 },
                 { q: "Başlangıç derecesi olan 1. Dan'ın adı nedir?", options: ["Shodan", "Nidan", "Sandan", "Yondan"], correct: 0 },
                 { q: "Teknik sonrası süregelen farkındalık hali?", options: ["Mokuso", "Zanshin", "Satori", "Kamae"], correct: 1 },
-                { q: "Aikido'nun Tokyo'daki manevi ve idari merkezi?", options: ["Kyoto", "Osaka", "Hombu Dojo", "Iwama"], correct: 2 },
+                { q: "Aikido'un Tokyo'daki manevi ve idari merkezi?", options: ["Kyoto", "Osaka", "Hombu Dojo", "Iwama"], correct: 2 },
                 { q: "Gerçek zaferin kendine olan zafer olduğunu belirten ilke?", options: ["Masakatsu Agatsu", "Katsuhayabi", "Takemusu Aiki", "Misogi"], correct: 0 },
                 { q: "Siyah kuşak sahiplerine ne ad verilir?", options: ["Yudansha", "Mudansha", "Shihan", "Kohai"], correct: 0 },
                 { q: "Henüz siyah kuşağı olmayanlara ne denir?", options: ["Yudansha", "Mudansha", "Sempai", "Sensei"], correct: 1 },
                 { q: "Yaratıcı ve sınırsız savunma felsefesi kavramı?", options: ["Takemusu Aiki", "Bushido", "Budo", "Kenjutsu"], correct: 0 },
                 { q: "Ruhsal aydınlanma veya büyük idrak anı?", options: ["Satori", "Misogi", "Zanshin", "Mokuso"], correct: 0 },
-                { q: "Işık hızında zafer/etki anlamına gelen kavram?", options: ["Katsuhayabi", "Zanshin", "Atemi", "Kuzushi"], correct: 0 },
-                { q: "Yolun lideri/Ueshiba ailesinin güncel reisi?", options: ["Doshu", "Soke", "O-Sensei", "Shihan"], correct: 0 },
-                { q: "Kurucunun resminin arkasındaki girintili sanat köşesi?", options: ["Tokonoma", "Kamiza", "Dojo", "Shinto"], correct: 0 },
-                { q: "Aikido'nun felsefi temel amacı nedir?", options: ["En güçlü olmak", "Kendini ve dünyayı iyileştirmek", "Rakibi yok etmek", "Kazanmak"], correct: 1 },
-                { q: "Antrenmandan sonra matı temizleme eylemi?", options: ["Soji", "Misogi", "Mokuso", "Kamae"], correct: 0 },
-                { q: "Siyah kuşak derecesinde 2. basamak hangisidir?", options: ["Nidan", "Shodan", "Sandan", "Yondan"], correct: 0 }
+                { q: "Işık hızında zafer/etki anlamına gelen kavram?", options: ["Katsuhayabi", "Zanshin", "Atemi", "Kuzushi"], correct: 0 }
             ]}
         ];
 
@@ -333,6 +336,7 @@
 
         class AikidoGame {
             constructor() { 
+                this.hiddenIndices = []; // 50:50 ile gizlenen şıkların indekslerini tutar
                 this.initApp();
             }
 
@@ -366,7 +370,9 @@
                 this.beltIdx = 0; 
                 this.qIdx = 0; 
                 this.streak = 0;
-                this.jokers = { sensei: true, f50: true };
+                this.hiddenIndices = [];
+                // Sensei jokerini takip listesinden çıkardım (sınırsız kullanım için)
+                this.jokers = { f50: true }; 
                 this.totalQ = this.gameData.reduce((acc, belt) => acc + belt.questions.length, 0);
                 this.currentGlobal = 0;
                 this.renderTracker(); 
@@ -406,11 +412,15 @@
                 
                 if(grid) {
                     grid.innerHTML = '';
-                    const opts = shuffle(q.options.map((o, i) => ({ text: o, id: i })));
-                    opts.forEach((o) => {
+                    const opts = q.options.map((o, i) => ({ text: o, id: i }));
+                    const shuffledOpts = shuffle([...opts]);
+                    
+                    shuffledOpts.forEach((o) => {
+                        if (this.hiddenIndices.includes(o.id)) return;
+
                         const btn = document.createElement('button');
                         btn.className = 'option-btn p-5 rounded-2xl text-left flex items-start gap-4 text-sm';
-                        btn.innerHTML = `<span class="text-amber-500 font-bold">•</span> <span>${o.text}</span>`;
+                        btn.innerHTML = `<span class="text-amber-500 font-bold opacity-70">•</span> <span>${o.text}</span>`;
                         btn.onclick = () => this.handleAnswer(o.id, btn);
                         grid.appendChild(btn);
                     });
@@ -430,10 +440,10 @@
                     }
                 }
                 
+                // Sensei butonu her zaman aktif
                 const senseiBtn = document.getElementById('joker-sensei');
                 if(senseiBtn) {
-                    if(this.jokers.sensei) senseiBtn.classList.remove('opacity-30', 'cursor-not-allowed');
-                    else senseiBtn.classList.add('opacity-30', 'cursor-not-allowed');
+                    senseiBtn.classList.remove('opacity-30', 'cursor-not-allowed');
                 }
             }
 
@@ -451,6 +461,7 @@
                     btn.classList.add('correct'); 
                     this.streak++; 
                     this.currentGlobal++;
+                    this.hiddenIndices = [];
                     setTimeout(() => this.next(), 600);
                 } else {
                     btn.classList.add('wrong');
@@ -472,25 +483,21 @@
             }
 
             useSensei() { 
-                if (!this.jokers.sensei) return; 
-                showSenseiMessage("Zihnini sakinleştir... Gerçek Aikido saldırıyı değil, akışı takip eder."); 
-                this.jokers.sensei = false; 
-                this.updateUI(); 
+                // Sınırsız kullanım: joker durumunu kontrol etmiyoruz ve false yapmıyoruz
+                const hint = AIKIDO_PHILOSOPHY[Math.floor(Math.random() * AIKIDO_PHILOSOPHY.length)];
+                showSenseiMessage(hint); 
             }
 
             use5050() {
                 if (this.streak < 3 || !this.jokers.f50) return;
                 const b = this.gameData[this.beltIdx];
                 const q = b.questions[this.qIdx];
-                const corrText = q.options[q.correct];
-                let rem = 0;
-                const btns = shuffle(Array.from(document.querySelectorAll('.option-btn')));
-                btns.forEach(b_el => {
-                    const optionText = b_el.querySelector('span:last-child').innerText;
-                    if (optionText !== corrText && rem < 2) {
-                        b_el.style.visibility = 'hidden'; rem++;
-                    }
-                });
+                const corr = q.correct;
+                
+                let wrongIndices = [0, 1, 2, 3].filter(i => i !== corr);
+                shuffle(wrongIndices);
+                this.hiddenIndices = wrongIndices.slice(0, 2);
+                
                 this.jokers.f50 = false; 
                 this.updateUI();
             }
@@ -538,6 +545,7 @@
                 if(app) app.classList.add('hidden'); 
                 if(intro) intro.classList.remove('hidden'); 
                 this.streak = 0;
+                this.hiddenIndices = [];
             }
         }
 
