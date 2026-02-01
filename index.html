@@ -1,0 +1,455 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="tr"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="description" content="Kim Siyah Kuşak Olmak İster? Aikido felsefesi ve teknikleri üzerine kurulu eğlenceli bir bilgi yarışması."&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Kim Siyah Kuşak Olmak İster: AİKİDO&lt;/title&gt;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- External Assets --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;family=Permanent+Marker&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Noto Sans JP', sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #0f172a;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #f8fafc;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>overflow-x: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.dojo-overlay {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.95)),<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                        </span>url('https://images.unsplash.com/photo-1555597673-b21d5c935865?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-size: cover;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-position: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: fixed;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>inset: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>z-index: -1;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.title-font { font-family: 'Permanent Marker', cursive; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.belt-node { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.option-btn {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: rgba(30, 41, 59, 0.7);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 2px solid #334155;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.2s;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.option-btn:hover:not(:disabled) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: rgba(51, 65, 85, 0.9);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-color: #fbbf24;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(-2px);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.correct { background-color: #059669 !important; border-color: #10b981 !important; animation: success-pulse 0.5s; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.wrong { background-color: #dc2626 !important; border-color: #ef4444 !important; }</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>@keyframes success-pulse {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>0% { transform: scale(1); }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>50% { transform: scale(1.05); }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>100% { transform: scale(1); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.belt-white { background: #ffffff; color: #000; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.belt-yellow { background: #fbbf24; color: #000; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.belt-orange { background: #f97316; color: #fff; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.belt-green { background: #22c55e; color: #fff; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.belt-blue { background: #3b82f6; color: #fff; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.belt-brown { background: #78350f; color: #fff; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.belt-black { background: #000000; color: #fff; border: 1px solid #fff; }</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.joker-locked { opacity: 0.4; cursor: not-allowed; filter: grayscale(1); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.joker-active { animation: glow 2s infinite; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>@keyframes glow {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>0%, 100% { box-shadow: 0 0 5px #a855f7; }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>50% { box-shadow: 0 0 20px #a855f7; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>#message-box {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transform: translate(-50%, -120%);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: transform 0.3s ease-out;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>left: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>#message-box.active {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transform: translate(-50%, 0);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.custom-scrollbar::-webkit-scrollbar { width: 6px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.custom-scrollbar::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.fade-in { animation: fadeIn 0.5s ease-in; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body class="min-h-screen flex items-center justify-center p-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="dojo-overlay"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Sensei Message Box --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="message-box" class="fixed top-10 z-[60] w-full max-w-md bg-indigo-900 border-2 border-indigo-400 p-4 rounded-2xl shadow-2xl flex items-center gap-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="text-3xl"&gt;⛩️&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p id="message-label" class="text-xs font-bold text-indigo-300 uppercase tracking-tighter"&gt;Sensei Fısıldıyor&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p id="message-text" class="text-sm font-medium italic"&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button onclick="hideSenseiMessage()" class="ml-auto text-indigo-300 hover:text-white"&gt;✕&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Intro / Info Screen --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="intro-screen" class="max-w-3xl w-full bg-slate-900/80 backdrop-blur-xl border border-slate-700 rounded-3xl p-8 shadow-2xl flex flex-col gap-6 fade-in"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="text-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1 class="title-font text-4xl text-amber-500 mb-2"&gt;AİKİDO'YA HOŞ GELDİNİZ&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p id="personalized-greeting" class="text-slate-400 tracking-widest font-bold"&gt;ZİHİN, BEDEN VE RUH UYUMU&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="bg-slate-800/60 p-6 rounded-2xl border border-amber-500/30"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label class="block text-amber-400 text-xs font-bold uppercase mb-2"&gt;Dojo Kayıt Defteri&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;input type="text" id="user-name-input" placeholder="Lütfen adınızı giriniz..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p id="new-year-msg" class="hidden mt-2 text-xs text-indigo-400 italic"&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm leading-relaxed overflow-y-auto max-h-[40vh] pr-2 custom-scrollbar"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-slate-800/40 p-4 rounded-xl border border-slate-700"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 class="text-amber-400 font-bold mb-1"&gt;🕊️ Felsefe&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-xs text-slate-400"&gt;Rakibi yok etmeyi değil, enerjiyi uyumla etkisiz hale getirmeyi amaçlar.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-slate-800/40 p-4 rounded-xl border border-slate-700"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 class="text-amber-400 font-bold mb-1"&gt;🥋 Faydalar&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-xs text-slate-400"&gt;Esneklik, odaklanma ve stres yönetimi kazandırır.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-slate-800/40 p-4 rounded-xl border border-slate-700 md:col-span-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 class="text-amber-400 font-bold mb-1"&gt;📜 Kurallar&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-xs text-slate-400"&gt;7 kuşak, her kuşakta 3 soru. Yanlış cevap yolu baştan yürütür. İpuçları (💡) size rehberlik eder.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button onclick="game.start()" class="bg-amber-500 text-slate-900 font-black py-4 rounded-2xl hover:bg-amber-400 transition transform hover:scale-105 shadow-xl"&gt;YOLCULUĞA BAŞLA&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Main Game App --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="game-app" class="hidden max-w-4xl w-full bg-slate-900/40 backdrop-blur-xl border border-slate-700 rounded-3xl p-6 md:p-10 shadow-2xl relative"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;header class="text-center mb-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1 class="title-font text-3xl md:text-5xl text-amber-500 drop-shadow-lg"&gt;KİM SİYAH KUŞAK OLMAK İSTER?&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="mb-10"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex flex-wrap justify-center gap-3 md:gap-4" id="belt-tracker"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="mt-4 h-2 bg-slate-800 rounded-full overflow-hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="progress-bar" class="h-full bg-amber-500 transition-all duration-700" style="width: 0%"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;main id="question-container" class="space-y-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-slate-800/80 p-6 rounded-2xl border-l-8 border-amber-500 shadow-inner relative"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="belt-tag" class="inline-block px-3 py-1 rounded text-xs font-black uppercase mb-3"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button onclick="game.showCurrentHint()" class="absolute top-4 right-4 bg-amber-500/20 hover:bg-amber-500/40 p-2 rounded-full transition text-amber-400 border border-amber-500/30"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/&gt;&lt;path d="M9 18h6"/&gt;&lt;path d="M10 22h4"/&gt;&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 id="question-text" class="text-xl md:text-2xl font-medium leading-relaxed"&gt;&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="options-grid"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/main&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;footer class="mt-10 flex flex-wrap justify-center gap-4 border-t border-slate-800 pt-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button id="joker-sensei" onclick="game.useSensei()" class="bg-indigo-600 hover:bg-indigo-500 px-6 py-3 rounded-xl text-sm font-bold shadow-lg transition-all"&gt;⛩️ Sensei'ye Sor&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button id="joker-50" onclick="game.use5050()" class="joker-locked bg-purple-600 px-6 py-3 rounded-xl text-sm font-bold shadow-lg transition-all flex flex-col items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span&gt;☯️ 50:50&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span id="joker-unlock-text" class="text-[10px] font-normal italic"&gt;3 seri gerekir&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button id="joker-skip" onclick="game.useSkip()" class="bg-teal-600 hover:bg-teal-500 px-6 py-3 rounded-xl text-sm font-bold shadow-lg transition-all"&gt;🌀 Pas Geç&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/footer&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="absolute top-4 right-6 text-slate-500 font-mono text-sm"&gt;Doğru Seri: &lt;span id="streak-val" class="text-amber-500"&gt;0&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Overlay Results --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="overlay" class="hidden fixed inset-0 bg-black/95 backdrop-blur-md z-50 flex items-center justify-center p-6 text-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="bg-slate-900 border-2 border-amber-500 p-10 rounded-3xl max-w-xl w-full shadow-2xl flex flex-col items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="modal-icon" class="text-7xl mb-6"&gt;🏆&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2 id="modal-title" class="title-font text-4xl text-amber-500 mb-4"&gt;SHODAN OLDUN!&lt;/h2&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="mb-8 p-6 bg-slate-800/40 rounded-xl border-l-4 border-indigo-500 italic text-slate-300"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p id="modal-quote" class="text-lg"&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p id="modal-quote-author" class="text-xs mt-2 text-indigo-400 font-bold uppercase tracking-widest"&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p id="modal-desc" class="text-slate-400 mb-10 leading-relaxed"&gt;&lt;/p&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button onclick="game.resetToStart()" class="bg-amber-500 text-slate-900 font-black px-12 py-4 rounded-full hover:bg-amber-400 transition transform hover:scale-105"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>YOLU TEKRAR YÜRÜ</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const AIKIDO_QUOTES = [</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ text: "Gerçek zafer, kendine karşı kazanılan zaferdir.", author: "Morihei Ueshiba" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ text: "Düşmek sorun değil, önemli olan her seferinde daha güçlü ayağa kalkmaktır.", author: "Aikido Disiplini" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ text: "Yolun kendisi hedeftir. Her adım bir öğretidir.", author: "Zen Öğretisi" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ text: "Hatalar, mükemmelliğe giden yolun taşlarıdır.", author: "Dojo Bilgeliği" }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const QUESTION_POOL = [</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>name: "Beyaz Kuşak",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>class: "belt-white",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>pool: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ q: "Aikido'nun kurucusu Morihei Ueshiba'ya ne denir?", options: ["Soke", "O-Sensei", "Doshu", "Shihan"], correct: 1, hint: "Japonca'da 'Büyük Öğretmen' anlamına gelir." },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ q: "Aikido kelimesindeki 'Ki' ne anlama gelir?", options: ["Sevgi", "Yol", "Enerji / Ruh", "Uyum"], correct: 2, hint: "Evrensel yaşam enerjisini temsil eder." },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ q: "Antrenman başlangıcında söylenen 'Lütfen birlikte çalışalım' sözü hangisidir?", options: ["Arigato", "Onegai Shimasu", "Hajime", "Rei"], correct: 1, hint: "Birbirimizden öğretmeyi rica ederiz." }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>name: "Sarı Kuşak",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>class: "belt-yellow",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>pool: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ q: "Ayaktaki temel duruşa ne ad verilir?", options: ["Seiza", "Kamae", "Ukemi", "Tenkan"], correct: 1, hint: "Hazır ve merkezlenmiş duruştur." },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ q: "Öne doğru yuvarlanarak düşüşe ne denir?", options: ["Mae Ukemi", "Ushiro Ukemi", "Yoko Ukemi", "Tobu Ukemi"], correct: 0, hint: "'Mae' ön demektir." },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ q: "Diz üstü yürüyüş tekniğine ne ad verilir?", options: ["Shikko", "Tenkan", "Irimi", "Tsugi-ashi"], correct: 0, hint: "Samurayların iç mekan hareketidir." }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>name: "Turuncu Kuşak",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>class: "belt-orange",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>pool: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ q: "Saldırganın gücünü arkaya yönlendiren dairesel adım hangisidir?", options: ["Irimi", "Tenkan", "Tsugi-ashi", "Ayumi-ashi"], correct: 1, hint: "180 derece dönüş içeren adımdır." },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ q: "Birinci kontrol/öğreti anlamına gelen teknik hangisidir?", options: ["Nikyo", "Sankyo", "Ikkyo", "Yonkyo"], correct: 2, hint: "Temel kol sabitleme tekniğidir." },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ q: "Aikido'da kullanılan ahşap sopaya ne denir?", options: ["Bokken", "Tanto", "Jo", "Katana"], correct: 2, hint: "128 cm uzunluğunda asadır." }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>name: "Yeşil Kuşak",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>class: "belt-green",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>pool: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ q: "'Kotegaeshi' tekniği nereye uygulanır?", options: ["Omuz", "Bilek", "Dirsek", "Boyun"], correct: 1, hint: "Bileğin içeri bükülmesidir." },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ q: "Doğrudan içeri girerek fırlatma tekniği?", options: ["Iriminage", "Shihonage", "Tenchi-nage", "Koshinage"], correct: 0, hint: "'Irimi' içeri girmek demektir." },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ q: "Teknik uygulayan kişiye ne denir?", options: ["Uke", "Nage (Tori)", "Sensei", "Kohai"], correct: 1, hint: "Fırlatışı yapan kişi." }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>name: "Mavi Kuşak",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>class: "belt-blue",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>pool: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ q: "'Shihonage'deki 'Shiho' ne demektir?", options: ["Dört yön", "Büyük atış", "Kılıç", "Nefes"], correct: 0, hint: "Dört yöne fırlatış demektir." },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ q: "Diz üstünde yapılan tekniklere ne denir?", options: ["Tachi-waza", "Suwari-waza", "Hanmi-handachi", "Randori"], correct: 1, hint: "'Suwari' oturmakla ilgilidir." },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ q: "Ahşap kılıca ne denir?", options: ["Tanto", "Bokken", "Jo", "Shinai"], correct: 1, hint: "Kenjutsu kılıcıdır." }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>name: "Kahverengi Kuşak",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>class: "belt-brown",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>pool: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ q: "'Gokyo' hangi saldırıya karşıdır?", options: ["Tekme", "Boğaz", "Bıçak", "Yumruk"], correct: 2, hint: "Beşinci öğretidir." },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ q: "Siyah kuşakların giydiği pileli pantolon?", options: ["Gi", "Keikogi", "Hakama", "Obi"], correct: 2, hint: "Samuray pantolonu." },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ q: "Birden fazla saldırgana karşı çalışma?", options: ["Randori", "Kata", "Suburi", "Embu"], correct: 0, hint: "Kaotik serbest çalışma." }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>name: "Siyah Kuşak",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>class: "belt-black",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>pool: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ q: "Aikido'nun manevi merkezi neresidir?", options: ["Tokyo", "Kyoto", "Iwama", "Osaka"], correct: 2, hint: "Aiki Jinja buradadır." },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ q: "Teknik sonrası tetikte kalma hali?", options: ["Mokuso", "Zanshin", "Satori", "Kamae"], correct: 1, hint: "Farkındalığın devam etmesidir." },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ q: "Uyum anlamına gelen terim?", options: ["Musubi", "Zanshin", "Kiai", "Atemi"], correct: 0, hint: "Bağlanmak demektir." }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Event listener for name input personalization</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const nameInput = document.getElementById('user-name-input');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>nameInput.addEventListener('input', (e) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const name = e.target.value.trim();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const nyMsg = document.getElementById('new-year-msg');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (name) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>nyMsg.innerText = `Mutlu Yıllar ${name}! Dojo kapıları senin için açılıyor.`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>nyMsg.classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>nyMsg.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function shuffleArray(array) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>for (let i = array.length - 1; i &gt; 0; i--) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const j = Math.floor(Math.random() * (i + 1));</p>
+<p class="p1"><span class="Apple-converted-space">                </span>[array[i], array[j]] = [array[j], array[i]];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>return array;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function showSenseiMessage(text, isHint = false) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const box = document.getElementById('message-box');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('message-label').innerText = isHint ? "⛩️ Sensei'nin İpucu" : "⛩️ Sensei Fısıldıyor";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('message-text').innerText = text;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box.classList.add('active');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>setTimeout(() =&gt; box.classList.remove('active'), 6000);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>class AikidoGame {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>constructor() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>this.userName = "";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>start() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>this.userName = nameInput.value.trim() || "Genç Savaşçı";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('intro-screen').classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('game-app').classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>this.init();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>init() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>this.gameData = QUESTION_POOL.map(belt =&gt; ({</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>...belt,</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>questions: shuffleArray([...belt.pool]).slice(0, 3)</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}));</p>
+<p class="p1"><span class="Apple-converted-space">                </span>this.beltIdx = 0;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>this.qIdx = 0;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>this.streak = 0;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>this.jokers = { sensei: true, f50: true, skip: true };</p>
+<p class="p1"><span class="Apple-converted-space">                </span>this.totalQuestions = this.gameData.reduce((acc, belt) =&gt; acc + belt.questions.length, 0);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>this.currentGlobalCount = 0;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('overlay').classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>this.renderTracker();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>this.updateUI();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>renderTracker() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const tracker = document.getElementById('belt-tracker');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>tracker.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>this.gameData.forEach((belt, i) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const node = document.createElement('div');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>node.className = `belt-node h-8 px-4 rounded-full flex items-center justify-center text-[10px] font-bold shadow-sm ${belt.class} ${i &gt; this.beltIdx ? 'opacity-20 scale-90' : 'opacity-100 scale-100'}`;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>node.innerText = belt.name;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>tracker.appendChild(node);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>updateUI() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const currentBelt = this.gameData[this.beltIdx];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const currentQ = currentBelt.questions[this.qIdx];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('question-text').innerText = currentQ.q;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const tag = document.getElementById('belt-tag');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>tag.innerText = `${currentBelt.name} - Soru ${this.qIdx + 1}/3`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>tag.className = `inline-block px-3 py-1 rounded text-xs font-black uppercase mb-3 ${currentBelt.class}`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('streak-val').innerText = this.streak;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const grid = document.getElementById('options-grid');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>grid.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>currentQ.options.forEach((opt, i) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const btn = document.createElement('button');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>btn.className = 'option-btn p-5 rounded-2xl text-left flex items-start gap-4';</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>btn.innerHTML = `&lt;span class="text-amber-500 font-bold"&gt;${String.fromCharCode(65 + i)}:&lt;/span&gt; &lt;span&gt;${opt}&lt;/span&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>btn.onclick = () =&gt; this.handleAnswer(i, btn);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>grid.appendChild(btn);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('progress-bar').style.width = `${(this.currentGlobalCount / this.totalQuestions) * 100}%`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const f50 = document.getElementById('joker-50');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (this.streak &gt;= 3 &amp;&amp; this.jokers.f50) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>f50.classList.remove('joker-locked');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>f50.classList.add('joker-active', 'hover:bg-purple-500');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>document.getElementById('joker-unlock-text').innerText = "Kullanıma Hazır!";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>f50.classList.add('joker-locked');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>f50.classList.remove('joker-active', 'hover:bg-purple-500');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>document.getElementById('joker-unlock-text').innerText = this.jokers.f50 ? "3 seri gerekir" : "Kullanıldı";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>this.setJokerStyle('joker-sensei', this.jokers.sensei);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>this.setJokerStyle('joker-skip', this.jokers.skip);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>setJokerStyle(id, active) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const el = document.getElementById(id);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (active) el.classList.remove('opacity-30', 'cursor-not-allowed');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>else el.classList.add('opacity-30', 'cursor-not-allowed');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>showCurrentHint() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showSenseiMessage(this.gameData[this.beltIdx].questions[this.qIdx].hint, true);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>handleAnswer(idx, btn) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const correct = this.gameData[this.beltIdx].questions[this.qIdx].correct;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (idx === correct) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>btn.classList.add('correct');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>this.streak++;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>this.currentGlobalCount++;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>setTimeout(() =&gt; this.next(), 800);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>btn.classList.add('wrong');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const btns = document.querySelectorAll('.option-btn');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>btns.forEach((b, i) =&gt; { if(i === correct) b.classList.add('correct'); });</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>setTimeout(() =&gt; this.end(false), 1200);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>next() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>this.qIdx++;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (this.qIdx &gt;= 3) { this.qIdx = 0; this.beltIdx++; this.renderTracker(); }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (this.beltIdx &gt;= this.gameData.length) this.end(true);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>else this.updateUI();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>useSensei() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (!this.jokers.sensei) return;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showSenseiMessage("Zihnini sakinleştir... Cevap Dojo'daki ilk dersinde, ruhunun derinliklerinde gizli.");</p>
+<p class="p1"><span class="Apple-converted-space">                </span>this.jokers.sensei = false;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>this.updateUI();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>use5050() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (this.streak &lt; 3 || !this.jokers.f50) return;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const correct = this.gameData[this.beltIdx].questions[this.qIdx].correct;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const btns = Array.from(document.querySelectorAll('.option-btn'));</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let removed = 0;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>shuffleArray(btns).forEach((btn) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (btn.querySelector('span:last-child').innerText !== this.gameData[this.beltIdx].questions[this.qIdx].options[correct] &amp;&amp; removed &lt; 2) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>btn.style.visibility = 'hidden';</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>removed++;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">                </span>this.jokers.f50 = false;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>this.updateUI();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>useSkip() { if (!this.jokers.skip) return; this.jokers.skip = false; this.currentGlobalCount++; this.next(); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>end(win) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const overlay = document.getElementById('overlay');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const quote = AIKIDO_QUOTES[Math.floor(Math.random() * AIKIDO_QUOTES.length)];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('modal-quote').innerText = `"${quote.text}"`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('modal-quote-author').innerText = quote.author;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>overlay.classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (win) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>document.getElementById('modal-icon').innerText = "🥋";</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>document.getElementById('modal-title').innerText = `${this.userName.toUpperCase()}, SHODAN OLDUN!`;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>document.getElementById('modal-desc').innerText = "Tebrikler! Aikido yolunda siyah kuşağa ulaştın. Gerçek ustalık şimdi başlıyor.";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>document.getElementById('modal-icon').innerText = "🎋";</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>document.getElementById('modal-title').innerText = "YOL DEVAM EDİYOR...";</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>document.getElementById('modal-desc').innerText = `Üzülme ${this.userName}, Aikido'da başarısızlık yoktur, sadece bir sonraki derse kadar mola vardır.`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>resetToStart() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('overlay').classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('game-app').classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('intro-screen').classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const game = new AikidoGame();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
